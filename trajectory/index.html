@@ -1,0 +1,137 @@
+<html>
+  <head>
+    <title>Testing trajectory</title>
+    <link rel="stylesheet" type="text/css" href="http://www.x3dom.org/x3dom/release/x3dom.css" />
+    <script type="text/javascript" src="http://www.x3dom.org/x3dom/release/x3dom-full.js"></script>
+    <script src='https://d3js.org/d3.v5.min.js' type='text/javascript'></script>
+
+  </head>
+  <body>
+    <button type="button" onclick="document.getElementById('slipsCamera').setAttribute('set_bind','true');">Slips</button>
+    <button type="button" onclick="document.getElementById('umpireCamera').setAttribute('set_bind','true');">Umpire</button>
+    <button type="button" onclick="document.getElementById('stumpsCamera').setAttribute('set_bind','true');">Stumps</button>
+    <button type="button" onclick="document.getElementById('topView').setAttribute('set_bind','true');">Top View</button>
+
+    <button type="button" onclick="toggleShape('trajectory');">Toggle Trajectories</button>
+    <button type="button" onclick="toggleShape('starting');">Toggle Starting</button>
+    <button type="button" onclick="toggleShape('pitching');">Toggle Pitching</button>
+    <button type="button" onclick="toggleShape('ending');">Toggle Ending</button>
+
+    <p id="coordinates">Loading...</p>
+
+    <X3D xmlns="http://www.web3d.org/specifications/x3d-namespace" showStat="false" showriteLineog="false" showLog="false"
+      x="0px" y="0px" width="800px" height="400px">
+      <Scene>
+        <Viewpoint id="umpireCamera" position="23.80208 -0.13703 1.48734" orientation="0.56668 0.56498 0.59973 2.05364"></Viewpoint>
+        <Viewpoint id="slipsCamera" position="-8.96518 -5.79259 1.55315" orientation="0.76747 -0.43025 -0.47527 1.67677"></Viewpoint>
+        <Viewpoint id="stumpsCamera" position="-4.56172 0.15235 1.33474" orientation="0.49701 -0.53082 -0.68645 1.93934"></Viewpoint>
+        <Viewpoint id="topView" position="10.32214 0.00026 31.01539" orientation="0 0 -1 1.57"></Viewpoint>
+
+        <DirectionalLight id="directional" direction='0 0 -1' on ="TRUE" intensity='0.2' shadowIntensity='0.0'> </DirectionalLight>
+
+        <transform rotation="1 0 0 -1.57">
+          <transform translation="0 -0.3 0">
+              <shape>
+                  <appearance>
+                      <material diffusecolor="0.905 0.847 0.611" ambientintensity="0.2" emissivecolor="0,0,0" shininess="0.2" specularcolor="0,0,0"></material>
+                  </appearance>
+                  <cylinder radius="0.028" height="0.745"></cylinder>
+              </shape>
+            </transform>
+        </transform>
+
+        <transform rotation="1 0 0 -1.57">
+          <transform translation="0 -0.3 0.1">
+              <shape>
+                  <appearance>
+                      <material diffusecolor="0.905 0.847 0.611" ambientintensity="0.2" emissivecolor="0,0,0" shininess="0.2" specularcolor="0,0,0"></material>
+                  </appearance>
+                  <cylinder radius="0.028" height="0.745"></cylinder>
+              </shape>
+            </transform>
+        </transform>
+
+        <transform rotation="1 0 0 -1.57">
+          <transform translation="0 -0.3 0.2">
+              <shape>
+                  <appearance>
+                      <material diffusecolor="0.905 0.847 0.611" ambientintensity="0.2" emissivecolor="0,0,0" shininess="0.2" specularcolor="0,0,0"></material>
+                  </appearance>
+                  <cylinder radius="0.028" height="0.745"></cylinder>
+              </shape>
+            </transform>
+        </transform>
+
+        <transform rotation="1 0 0 -1.57">
+          <transform translation="20 -0.3 0">
+              <shape>
+                  <appearance>
+                      <material diffusecolor="0.905 0.847 0.611" ambientintensity="0.2" emissivecolor="0,0,0" shininess="0.2" specularcolor="0,0,0"></material>
+                  </appearance>
+                  <cylinder radius="0.028" height="0.745"></cylinder>
+              </shape>
+            </transform>
+        </transform>
+
+        <transform rotation="1 0 0 -1.57">
+          <transform translation="20 -0.3 0.1">
+              <shape>
+                  <appearance>
+                      <material diffusecolor="0.905 0.847 0.611" ambientintensity="0.2" emissivecolor="0,0,0" shininess="0.2" specularcolor="0,0,0"></material>
+                  </appearance>
+                  <cylinder radius="0.028" height="0.745"></cylinder>
+              </shape>
+            </transform>
+        </transform>
+
+        <transform rotation="1 0 0 -1.57">
+          <transform translation="20 -0.3 0.2">
+              <shape>
+                  <appearance>
+                      <material diffusecolor="0.905 0.847 0.611" ambientintensity="0.2" emissivecolor="0,0,0" shininess="0.2" specularcolor="0,0,0"></material>
+                  </appearance>
+                  <cylinder radius="0.028" height="0.745"></cylinder>
+              </shape>
+            </transform>
+        </transform>
+
+        <Transform translation="12 0 -0.04">
+          <transform rotation="1 0 0 -1.5707963267948966">
+            <Shape>
+              <Appearance>
+                <Material diffuseColor="1 1 1">
+                </Material>
+                <ImageTexture url="sand-texture.jpg"/>
+              </Appearance>
+              <Box size="30 0.001 3"/>
+            </Shape>
+          </transform>
+        </Transform>
+
+        <Transform translation="8 0 -0.06">
+          <transform rotation="1 0 0 -1.5707963267948966">
+            <Shape>
+              <Appearance>
+                <Material diffuseColor="1 1 1">
+                </Material>
+                <ImageTexture url="grass-texture.png"/>
+              </Appearance>
+              <Box size="50 0.001 40"/>
+            </Shape>
+          </transform>
+        </Transform>
+
+        <transform translation='0 0 0' id="trajectories">
+        </transform>
+
+      </Scene>
+    </X3D>
+
+
+    <script type="text/javascript" src="pulse.js"></script>
+    <script type="text/javascript" src="shape.js"></script>
+    <script type="text/javascript" src="compute.js"></script>
+    <script type="text/javascript" src="read-trajectory.js"></script>
+
+  </body>
+</html>
